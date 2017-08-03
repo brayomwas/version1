@@ -1,11 +1,11 @@
 #comment
 #Start from a base Image
 FROM ubuntu
-RUN apt-get update && apt-get install openjdk-8-jre && apt-get install openjdk-8-jdk && apt-get install sbt
+RUN apt-get update && apt-get -y upgrade && apt-get -y install openjdk-8-jre && apt-get -y install openjdk-8-jdk && apt-get -y install sbt
 #Create working directory
 RUN mkdir ussd/
 WORKDIR ussd/
 #Install framework
 COPY . ussd/
 RUN cd ussd/ && sbt
-CMD ["sbt run"]
+CMD ["sbt", "run"]
